@@ -1,0 +1,14 @@
+services:
+  ha:
+    build:
+      context: .
+      args:
+        BUILD_FROM: ghcr.io/home-assistant/aarch64-base-python:3.12-alpine3.20
+    container_name: ha
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./.homeassistant:/config
+      - ./.media:/media
+    privileged: true
+    network_mode: host
